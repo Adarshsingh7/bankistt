@@ -138,7 +138,7 @@ const lazyImg = function (enteries) {
   observer.unobserve(entry.target);
 };
 
-const imageObserver = new IntersectionObserver(lazyImg, { threshold: 0, rootMargin: '200px' });
+const imageObserver = new IntersectionObserver(lazyImg, { threshold: 0, rootMargin: '-200px' });
 allImages.forEach(img => imageObserver.observe(img));
 
 // const initialCord = section1.getBoundingClientRect();
