@@ -126,13 +126,19 @@ observer.observe(header);
 // lazy loading images
 const allImages = document.querySelectorAll('.features__img');
 
+// lazy loading images
+const allImages = document.querySelectorAll('img[data-src]');
 const lazyImg = function (enteries) {
   const [entry] = enteries;
-  if (entry.isIntersecting) entry.target.classList.remove('lazy-img');
+  if (!entry.isIntersecting) return;
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
   observer.unobserve(entry.target);
 };
 
-const imageObserver = new IntersectionObserver(lazyImg, { threshold: 0.95 });
+const imageObserver = new IntersectionObserver(lazyImg, { threshold: 0, rootMargin: '200px' });
 allImages.forEach(img => imageObserver.observe(img));
 
 // const initialCord = section1.getBoundingClientRect();
