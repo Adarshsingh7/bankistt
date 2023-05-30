@@ -124,9 +124,6 @@ const observer = new IntersectionObserver(headerCallback, headerOption);
 observer.observe(header);
 
 // lazy loading images
-const allImages = document.querySelectorAll('.features__img');
-
-// lazy loading images
 const allImages = document.querySelectorAll('img[data-src]');
 const lazyImg = function (enteries) {
   const [entry] = enteries;
